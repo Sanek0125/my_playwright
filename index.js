@@ -14,10 +14,12 @@ function getNumberFromString(string) {
   await page.waitForSelector(`text=/^Followers$/i`);
 
   const span = await page.$(`text=/^Followers$/i`);
+
   await page.screenshot({path: 'screenshot3.png'});
 
     
   const followers = await page.evaluate(async span => {
+    
     return span.parentNode.parentNode.getAttribute('title');
   }, span);
 
